@@ -1,76 +1,95 @@
 import 'package:flutter/material.dart';
 import 'package:jewerlyapp/constants.dart';
+import 'package:jewerlyapp/home_components/HeaderAndSearchbar.dart';
+import 'package:jewerlyapp/home_components/SectionTitle.dart';
 
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        Container(
-          height: size.height * 0.2,
-          child: Stack(
-            children: <Widget>[
-              //container to be added to the appbar to annd form the b0ttom border radius
-              Container(
-                padding: EdgeInsets.only(
-                  bottom: 50.0,
-                  left: Kpadding,
-                  
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          HeaderAndSearchBar(size: size),
+          SectionTitle(
+            title: "Jewerlies",
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                JewerlyProduct(image: "assets/Gold_ring.png",
+                name: "Gold ring",
+                price: 500000, 
+                press: (){},),
+                JewerlyProduct(image: "assets/diamond_earings.png",
+                name: "Diamond Earings",
+                price: 80000, 
+                press: (){},),
+                JewerlyProduct(image: "assets/silver_ring.png",
+                name: "Silver Diamond ring",
+                price: 300000, 
+                press: (){},),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class JewerlyProduct extends StatelessWidget {
+  const JewerlyProduct({
+    Key key,
+    this.image,
+    this.name,
+    this.price,
+    this.press,
+    
+    
+  }) : super(key: key);
+
+  final String image;
+  final String name;
+  final int price;
+  final Function press;
+
+  @override
+  Widget build(BuildContext context) {
+    Size size=MediaQuery.of(context).size;
+    return GestureDetector(
+      onTap: press,
+      child: Container(
+        margin: EdgeInsets.all(8.0),
+        decoration: BoxDecoration(boxShadow: [BoxShadow(
+          color: kprimaryColor.withOpacity(0.3),
+          spreadRadius: 1,
+          blurRadius: 0.3,
+          offset: Offset(1, 0), // changes position of shadow
+        )]),
+        width: size.width * 0.4,
+        child: Card(
+          child: Column(
+            children: [
+              SizedBox(
+                width: size.width * 0.4 - 30,
+                child: Image.asset(
+                  image,
+                  fit: BoxFit.fill,
                 ),
-                height: size.height * 0.2 - 27,
-                decoration: BoxDecoration(
-                    color: kprimaryColor,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(36),
-                        bottomRight: Radius.circular(36))),
-                child: Row(
-                  children: [
-                    Text(
-                      "Welcome To Jewerly App!",
-                      style: Theme.of(context).textTheme.headline6.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                  ],
-                ),
+                height: size.width * 0.4 - 24,
               ),
-              //position widget that will help us tp position the container widget dat will be used as a search boc
-              Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: Kpadding),
-                  padding: EdgeInsets.symmetric(horizontal: Kpadding),
-                  height: 50.0,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                            offset: Offset(0, 8),
-                            blurRadius: 30.0,
-                            color: kprimaryColor)
-                      ]),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      //text tp be seen before a user inputs a search
-                      hintText: "search for an Item",
-                      hintStyle: TextStyle(color: ktextColor),
-                      //rempve the border of the textflied
-                      enabledBorder: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      suffixIcon: Icon(Icons.search),
-                    ),
-                  ),
-                ),
+              RichText(
+                text: TextSpan(children: [
+                  TextSpan(text:'$name\n'.toUpperCase(),style:Theme.of(context).textTheme.button),
+                  TextSpan(text: "Price: $price Rwf", style: TextStyle(color: kprimaryColor))
+                ]),
               )
             ],
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }

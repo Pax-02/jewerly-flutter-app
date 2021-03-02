@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jewerlyapp/constants.dart';
 import 'package:jewerlyapp/homepage.dart';
+import 'package:jewerlyapp/signup_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,17 +12,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Jewerly App',
+      title: 'YLC',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: kbackgroundColor,
-        //primary color
-        primaryColor:kprimaryColor,
-        textTheme: Theme.of(context).textTheme.apply(bodyColor: ktextColor),
-        // visualDensity: VisualDensity.adaptivePlatformDensity, 
-      ),
-      home:HomePage(),
+          scaffoldBackgroundColor: kbackgroundColor,
+          //primary color
+          primaryColor: kprimaryColor,
+          textTheme: Theme.of(context).textTheme.apply(bodyColor: ktextColor),
+          // visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: "Comfortaa"),
+      home: SignupScreen(),
     );
   }
 }
-

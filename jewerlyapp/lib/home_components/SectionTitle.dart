@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jewerlyapp/constants.dart';
+
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({

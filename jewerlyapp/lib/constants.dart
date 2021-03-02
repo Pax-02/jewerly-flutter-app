@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 //colors to be used 
 
-const kprimaryColor= Color(0xFFA1887F);
+const kprimaryColor= Color(0xFFFFCCBC);
 
 const ktextColor= Color(0xFF455A64);
 

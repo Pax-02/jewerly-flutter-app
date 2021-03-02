@@ -14,7 +14,7 @@ class Body extends StatelessWidget {
         children: [
           HeaderAndSearchBar(size: size),
           SectionTitle(
-            title: "Jewerlies",
+            title: "Jewelry",
           ),
           JewerlyProduct(),
 

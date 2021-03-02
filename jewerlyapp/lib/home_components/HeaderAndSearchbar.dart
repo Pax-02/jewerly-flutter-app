@@ -63,7 +63,7 @@ class HeaderAndSearchBar extends StatelessWidget {
                 decoration: InputDecoration(
                   //text tp be seen before a user inputs a search
                   hintText: "search for an Item",
-                  hintStyle: TextStyle(color: ktextColor),
+                  hintStyle: TextStyle(color: ktextColor, fontWeight: FontWeight.w200),
                   //rempve the border of the textflied
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
